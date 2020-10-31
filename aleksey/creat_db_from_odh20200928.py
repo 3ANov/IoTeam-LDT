@@ -21,8 +21,6 @@ with open('data_from_json.txt', 'w', encoding='utf-8') as f:
             print('===========================================================================', file=f)
     except IndexError as err:
         print(err)
-# print(js['name'])
-# print(lines[0])
 # ALL 7596
 # 19
 tags = ["name", "tree", "root_id", "distance", "end_date", "geometry", "owner_id", "file_list", "object_id",
