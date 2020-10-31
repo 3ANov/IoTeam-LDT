@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'users',
     'map',
+    'file_processing',
 ]
 
 MIDDLEWARE = [

@@ -16,8 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from map_project.views import IndexTemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('map.urls'))
+    path('map/', include('map.urls')),
+    path('upload_file/', include('file_processing.urls')),
+    path('', IndexTemplateView.as_view(), name='home'),
+
 ]

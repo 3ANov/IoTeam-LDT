@@ -13,21 +13,23 @@
 </head>
 <body>
 <div class="container">
-    <div class="row">
-        <div class="col">
-            <h1 class="text-center">Проект интерактивной карты благоустройства</h1>
+    <a href="{% url 'home' %}" class="text-dark text-decoration-none">
+        <div class="row">
+            <div class="col">
+                <h1 class="text-center">Проект интерактивной карты благоустройства</h1>
+            </div>
         </div>
-    </div>
+    </a>
     <div class="row my-3">
         {% if user.is_authenticated %}
         <div class="col text-center">
-            <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Карта</a>
+            <a href="{% url 'map' %}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Карта</a>
         </div>
         <div class="col text-center">
             <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Список задач</a>
         </div>
         <div class="col text-center">
-            <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Добавление файлов</a>
+            <a href="{% url 'upload_file' %}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Добавление файлов</a>
         </div>
         <div class="col text-center">
             <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Выход</a>
