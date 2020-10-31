@@ -11,29 +11,29 @@ with sq.connect(PATH_DB) as con:
     cur.execute("""
     CREATE TABLE IF NOT EXISTS json(
     id INTEGER PRIMARY KEY,
+    root_id INTEGER,
+    object_id INTEGER,
     name TEXT,
     geometry TEXT
     )
     """)
     try:
         sqlite_insert_with_param = """INSERT INTO json
-                          (id, name, geometry)
-                          VALUES (?, ?, ?);"""
+                          (id, root_id,object_id, name, geometry)
+                          VALUES (?, ?, ?, ?, ?);"""
         with open('odh20200928', 'r', encoding='utf-8') as f:
             lines = f.read().split('\n')
-            for i in range((len(lines)) - 1):
+            for i in range(2):
                 if 'name' in lines[i]:
-                    id = i
-                    print(id)
+                    id = i + 1
                     name = json.loads(lines[i])['name']
-                # print(name)
+                    root_id = json.loads(lines[i])['root_id']
+                    object_id = json.loads(lines[i])['object_id']
                 if 'geometry' in lines[i]:
                     geometry = str(json.loads(lines[i])['geometry'])
                 if 'geometry' not in lines[i]:
                     geometry = 0
-                # print(geometry)
-                data_tuple = (id, name, geometry)
-                print(data_tuple)
+                data_tuple = (id, root_id, object_id, name, geometry)
                 cur.execute(sqlite_insert_with_param, data_tuple)
                 con.commit()
                 print("Inserted successfully")
@@ -41,6 +41,4 @@ with sq.connect(PATH_DB) as con:
     except sq.Error as error:
         print("Failed to insert", error)
     finally:
-        # if con:
-            con.close()
-            print("Closed")
+        print("Closed")
