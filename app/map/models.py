@@ -10,6 +10,12 @@ class OdhRecord(models.Model):
         geometry_type - тип пространственного объекта (Точка, полигон и т.д.)
     """
     root_id = models.IntegerField(unique=True)
+    object_id = models.IntegerField(unique=True)
+    distance = models.DecimalField(max_digits=7, decimal_places=2)
     name = models.CharField(max_length=300)
     geometry = models.TextField()
     geometry_type = models.CharField(max_length=20)
+    coordinates = models.TextField()
+
+
+
