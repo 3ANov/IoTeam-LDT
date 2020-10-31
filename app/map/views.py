@@ -1,5 +1,5 @@
 from django.core.serializers import serialize
-from django.http import JsonResponse, HttpResponse
+from django.http import HttpResponse
 from django.views.generic import TemplateView
 
 from map.models import OdhRecord
