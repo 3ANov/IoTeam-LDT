@@ -18,7 +18,7 @@ def creat_db():
     pd_read_2020 = pd.read_excel('Свод по замене асфальтового покрытия.xlsx',
                                  sheet_name='общий  ',
                                  usecols='A:K',
-                                 header=4,
+                                 header=5,
                                  nrows=1153
                                  )
 
@@ -36,10 +36,11 @@ def creat_db():
                          6: 'basis_for_inclusion', 7: 'program', 8: 'object_category', 9: 'carriageway',
                          10: 'sidewalks', 11: 'roadside'}, axis=1,
                         inplace=True)
+
     with sq.connect(PATH_DB) as connection:
         try:
 
-            pd_read_2019.to_sql('2019', connection, if_exists='replace',
+            pd_read_2019.to_sql('a_2019', connection, if_exists='replace',
                                 index=False)
         except sq.Error as error:
             print('"Failed creat table", error')
@@ -47,7 +48,7 @@ def creat_db():
     with sq.connect(PATH_DB) as connection:
         try:
 
-            pd_read_2019.to_sql('2020', connection, if_exists='replace',
+            pd_read_2020.to_sql('b_2020', connection, if_exists='replace',
                                 index=False)
         except sq.Error as error:
             print('"Failed creat table", error')
