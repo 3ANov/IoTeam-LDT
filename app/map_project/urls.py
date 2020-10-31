@@ -16,9 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from map.views import MapTemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', MapTemplateView.as_view(), name='map')
+    path('', include('map.urls'))
 ]
