@@ -10,6 +10,6 @@ class MapTemplateView(TemplateView):
 
 
 def odh_record_dataset(request):
-    data = serialize('json', OdhRecord.objects.all(),
-                     fields=('root_id', 'name', 'geometry', 'geometry_type'))
+    data = serialize('json', OdhRecord.objects.all()[:10],
+                     fields=('root_id', 'name', 'coordinates', 'geometry_type'))
     return HttpResponse(data, content_type="json")
