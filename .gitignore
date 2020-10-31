@@ -1,7 +1,6 @@
 # ADD INGORE
 .idea
 venv
-aleksey_example
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
