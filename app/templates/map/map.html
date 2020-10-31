@@ -19,31 +19,36 @@
 	<title>OpenLayers example</title>
 </head>
 <body>
-	<h2>My Map</h2>
-	<div id="map" class="map"></div>
-	<script type="text/javascript">
-		var example;
+<h2>My Map</h2>
+<div id="map" class="map"></div>
+<script type="text/javascript">
+	var example;
 (function (example) {
+    var moscow = egip.layers.toMetric([37.6178, 55.7517]);
     var map = egip.layers.createMap({
         target: 'map',
         layers: [egip.layers.createTiles2GIS()],
-        view: egip.layers.createViewWGS({
+        view: egip.layers.createView77({
             zoom: 9
         }),
     });
-
-    postLayerButton.onclick = run;
-    // установить значение один раз
-    // egip.api.axiosEgipRest.defaults.baseURL = 'http://egiptest.gost-group.com/egip'
-    egip.setConfig({
-        baseURL: '/'
+    var layer = egip.layers.createVectorLayer({
+        id: 'point',
+        type: 'random',
+        source: egip.layers.createVectorSource({
+            features: [new ol.Feature(new ol.geom.Point([10000, 10000]))]
+        }),
+        style: new ol.style.Style({
+            image: new ol.style.Circle({
+                radius: 10,
+                fill: new ol.style.Fill({
+                    color: egip.layers.mock.getRandomColor()
+                })
+            })
+        })
     });
-    egip.api.login({
-        login: 'hakaton1',
-        password: 'iH2m03A#'
-    });
-
+    map.addLayer(layer);
 })(example || (example = {}));
-	</script>
+</script>
 </body>
 </html>
