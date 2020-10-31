@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'users',
     'map',
     'file_processing',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [

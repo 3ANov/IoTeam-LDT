@@ -11,7 +11,7 @@ from file_processing.forms import FileUploadForm
 class FileUploadView(View):
     form_class = FileUploadForm
     success_url = reverse_lazy('home')
-    template_name = 'upload.html'
+    template_name = 'file_processing/upload.html'
 
     def get(self, request, *args, **kwargs):
         form = self.form_class()
