@@ -23,3 +23,10 @@ FROM b_2020
 GROUP BY b_2020.object_name
 HAVING COUNT(*) > 1;
 ```
+
+```sqlite
+--Сводная таблица соответствий полей
+SELECT *  FROM json, a_2019 WHERE json.name = a_2019.object_name
+union
+SELECT * FROM json, b_2020 WHERE json.name = b_2020.object_name;
+```
