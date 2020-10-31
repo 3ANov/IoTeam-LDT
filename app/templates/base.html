@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+{% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+    {% block extrahead %}
+    {% endblock extrahead %}
+</head>
+<body>
+
+
+<div class="container">
+</div>
+{% block content %}
+{% endblock %}
+</body>
+
+</html>
