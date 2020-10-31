@@ -43,7 +43,7 @@
 	(function (example) {
 
 		var odf_data_url = '{% url "odh_record_dataset" %}';
-		var vectorLayer = new VectorLayer({
+		var vectorLayer = new egip.layers.({
 			source: new VectorSource({
 				url: odf_data_url,
 				format: new GeoJSON(),
