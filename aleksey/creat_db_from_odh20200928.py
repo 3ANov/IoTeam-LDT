@@ -2,8 +2,8 @@
 
 import json
 
-# creat example for txt file and correct quickly
-
+# creat example for TXT FORMAT FILES file and correct quickly
+# creat
 with open('odh20200928', 'r', encoding='utf-8') as f:
     lines = f.read().split('\n')
 js = json.loads(lines[0])
