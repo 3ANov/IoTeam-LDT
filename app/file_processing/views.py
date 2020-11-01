@@ -1,14 +1,12 @@
-from django.http import HttpResponseRedirect
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
-
-# Create your views here.
 from django.urls import reverse_lazy
 from django.views import View
 
 from file_processing.forms import FileUploadForm
 
 
-class FileUploadView(View):
+class FileUploadView(LoginRequiredMixin, View):
     form_class = FileUploadForm
     success_url = reverse_lazy('home')
     template_name = 'file_processing/upload.html'
