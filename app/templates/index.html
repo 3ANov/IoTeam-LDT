@@ -8,5 +8,13 @@
 
 
 {% block content %}
-Главная страница
+<h1 class="text-center">Главная страница</h1>
+ <div class="row my-3">
+        <div class="col-sm text-center">
+            <a href="{% url 'chart_1' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Статистика первая</a>
+        </div>
+        <div class="col-sm text-center">
+            <a href="{% url 'chart_2' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Статистика вторая</a>
+        </div>
+ </div>
 {% endblock %}

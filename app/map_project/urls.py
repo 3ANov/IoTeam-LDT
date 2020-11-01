@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView
 
 from map_project.views import IndexTemplateView
 
@@ -24,4 +25,6 @@ urlpatterns = [
     path('map/', include('map.urls')),
     path('upload_file/', include('file_processing.urls')),
     path('accounts/', include('accounts.urls')),
+    path('statistic_1/', TemplateView.as_view(template_name='statistic/chart_1.html'), name='chart_1'),
+    path('statistic_2/', TemplateView.as_view(template_name='statistic/chart_2.html'), name='chart_2'),
 ]
