@@ -3,12 +3,15 @@ version: '3.8'
 
 services:
   web:
-    build: ./app
+    build:
+      context: ./app
+      dockerfile: Dockerfile.prod
     command: gunicorn map_project.wsgi:application --bind 0.0.0.0:8000
     volumes:
-      - ./app/:/usr/src/app/
-    ports:
-      - 8000:8000
+      - static_volume:/home/app/web/staticfiles
+      - media_volume:/home/app/web/mediafiles
+    expose:
+      - 8000
     env_file:
       - ./.env.dev
     depends_on:
@@ -21,6 +24,18 @@ services:
       - POSTGRES_USER=testuser
       - POSTGRES_PASSWORD=testuser
       - POSTGRES_DB=db_for_moscow_hack
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_volume:/home/app/web/staticfiles
+      - media_volume:/home/app/web/mediafiles
+    ports:
+      - 80:80
+    depends_on:
+      - web
+
 
 volumes:
   postgres_data:
+  static_volume:
+  media_volume:
