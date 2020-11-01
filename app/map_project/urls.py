@@ -23,5 +23,5 @@ urlpatterns = [
     path('', IndexTemplateView.as_view(), name='home'),
     path('map/', include('map.urls')),
     path('upload_file/', include('file_processing.urls')),
-    path('users/', include('users.urls')),
+    path('accounts/', include('accounts.urls')),
 ]

@@ -18,7 +18,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.gis',
     'bootstrap4',
-    'users',
+    'accounts',
     'map',
     'file_processing',
     'crispy_forms',
@@ -91,7 +91,7 @@ STATICFILES_DIRS = (
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-#AUTH_USER_MODEL = 'users.User'
+#AUTH_USER_MODEL = 'accounts.User'
 
 # Parse database connection url strings like psql://user:pass@127.0.0.1:8458/db
 DATABASES = {
