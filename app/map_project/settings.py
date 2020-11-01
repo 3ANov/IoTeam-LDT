@@ -108,3 +108,6 @@ DATABASES = {
 
 GDAL_LIBRARY_PATH=glob('/usr/lib/libgdal.so.*')[0]
 GEOS_LIBRARY_PATH=glob('/usr/lib/libgeos_c.so.*')[0]
+
+LOGIN_REDIRECT_URL = '/'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

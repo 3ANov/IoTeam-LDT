@@ -20,8 +20,8 @@ from map_project.views import IndexTemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', IndexTemplateView.as_view(), name='home'),
     path('map/', include('map.urls')),
     path('upload_file/', include('file_processing.urls')),
-    path('', IndexTemplateView.as_view(), name='home'),
-
+    path('users/', include('users.urls')),
 ]
