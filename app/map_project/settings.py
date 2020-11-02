@@ -91,6 +91,10 @@ STATICFILES_DIRS = (
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
+
+
 #AUTH_USER_MODEL = 'accounts.User'
 
 # Parse database connection url strings like psql://user:pass@127.0.0.1:8458/db
