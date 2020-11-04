@@ -10,7 +10,6 @@ def parsing_odh_file():
         lines = f.content.open('r').read().split('\n')
         for i in range((len(lines)) - 1):
             if 'name' in lines[i]:
-                id = i + 1
                 name = json.loads(lines[i])['name']
                 root_id = json.loads(lines[i])['root_id']
                 object_id = json.loads(lines[i])['object_id']
