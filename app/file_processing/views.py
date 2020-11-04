@@ -23,7 +23,7 @@ class FileUploadView(LoginRequiredMixin, View):
         form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            #parsing_odh_file()
+            parsing_odh_file()
             return redirect(self.success_url)
         else:
             return render(request, self.template_name, {'form': form})
