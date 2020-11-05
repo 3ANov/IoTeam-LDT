@@ -48,17 +48,19 @@
                 return resp.json();
             })
             .then(function (data) {
-                console.log(data)
+                //console.log(data)
                 for (geom of data){
-                    console.log(geom['fields']['geometry_type']);
-                    var class_str = "(class "+ geom['fields']['geometry_type'] +" {})";
+                    //console.log(geom['fields']['geometry_type']);
+                    var class_str = "ol.geom."+ geom['fields']['geometry_type'];
                     var a = eval(class_str);
-                    console.log(new a([10000, 10000]));
-                    console.log(new ol.geom.Point([10000, 10000]));
+                    // console.log(new a(geom['fields']['coordinates']));
+                    // console.log(new ol.geom.Point([10000, 10000]));
+                    console.log(geom['fields']['coordinates']);
+                    odh_features.push(new ol.Feature(new a(geom['fields']['coordinates'])));
                 }
 
             });
-
+        console.log(odh_features);
         var layer = egip.layers.createVectorLayer({
             id: 'point',
             type: 'random',
