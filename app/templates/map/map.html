@@ -56,7 +56,8 @@
                     // console.log(new a(geom['fields']['coordinates']));
                     // console.log(new ol.geom.Point([10000, 10000]));
                     console.log(geom['fields']['coordinates']);
-                    odh_features.push(new ol.Feature(new a(geom['fields']['coordinates'])));
+                    console.log(JSON.parse(geom['fields']['coordinates']));
+                    odh_features.push(new ol.Feature(new a(JSON.parse(geom['fields']['coordinates']))));
                 }
 
             });
