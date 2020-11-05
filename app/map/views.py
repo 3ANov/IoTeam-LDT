@@ -13,6 +13,6 @@ class MapTemplateView(LoginRequiredMixin, TemplateView):
 
 @login_required
 def odh_record_dataset(request):
-    data = serialize('json', OdhRecord.objects.all()[:10],
+    data = serialize('json', OdhRecord.objects.all()[:1],
                      fields=('root_id', 'name', 'coordinates', 'geometry_type'))
     return HttpResponse(data, content_type="json")

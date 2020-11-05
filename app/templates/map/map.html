@@ -29,7 +29,6 @@
     var example;
     (function (example) {
 
-
         var moscow = egip.layers.toMetric([37.6178, 55.7517]);
         var map = egip.layers.createMap({
             target: 'map',
@@ -39,10 +38,24 @@
             }),
         });
 
-        odh_features = [new ol.Feature(new ol.geom.Point([10000, 10000]))]
+        //odh_features = [new ol.Feature(new ol.geom.Point([9000, 8000])), new ol.Feature(new ol.geom.Point([10000, 8000]))];
 
+        var layer = egip.layers.createVectorLayer({
+            id: 'polygons',
+            type: 'random',
+            source: egip.layers.createVectorSource({}),
+            // style: new ol.style.Style({
+            //     image: new ol.style.Circle({
+            //         radius: 10,
+            //         fill: new ol.style.Fill({
+            //             color: egip.layers.mock.getRandomColor()
+            //         })
+            //     })
+            // })
+        });
+        map.addLayer(layer);
 
-        var odh_data_url = '{% url 'odh_record_dataset' %}';
+     var odh_data_url = '{% url 'odh_record_dataset' %}';
         fetch(odh_data_url)
             .then(function (resp) {
                 return resp.json();
@@ -51,35 +64,23 @@
                 //console.log(data)
                 for (geom of data){
                     //console.log(geom['fields']['geometry_type']);
-                    var class_str = "ol.geom."+ geom['fields']['geometry_type'];
-                    var a = eval(class_str);
-                    // console.log(new a(geom['fields']['coordinates']));
+                    var class_str = "new ol.geom."+ geom['fields']['geometry_type']+"("+[JSON.parse(geom['fields']['coordinates'])] +")";
+                    //console.log(class_str);
+                    //var a = eval(class_str);
+                    //console.log(a);
+                    //console.log(new ol.Feature(new a(JSON.parse(geom['fields']['coordinates']))));
                     // console.log(new ol.geom.Point([10000, 10000]));
-                    console.log(geom['fields']['coordinates']);
-                    console.log(JSON.parse(geom['fields']['coordinates']));
-                    odh_features.push(new ol.Feature(new a(JSON.parse(geom['fields']['coordinates']))));
+                    //console.log(geom['fields']['coordinates']);
+                    //console.log(JSON.parse(geom['fields']['coordinates']));
+                    // odh_features.push(new ol.Feature(eval(class_str)));
+                    // console.log(new ol.geom.Point([10000, 10001]));
+                    // odh_features.push(new ol.Feature(new ol.geom.Point([10000, 10000])));
+                    console.log(egip.layers.getLayerById(map, 'polygons'));
+
+                    egip.layers.getLayerById(map, 'polygons').getSource()
+                        .addFeature(new ol.Feature(eval(class_str)));
                 }
-
             });
-        console.log(odh_features);
-        var layer = egip.layers.createVectorLayer({
-            id: 'point',
-            type: 'random',
-            source: egip.layers.createVectorSource({
-
-                features: odh_features
-            }),
-            style: new ol.style.Style({
-                image: new ol.style.Circle({
-                    radius: 10,
-                    fill: new ol.style.Fill({
-                        color: egip.layers.mock.getRandomColor()
-                    })
-                })
-            })
-        });
-        map.addLayer(layer);
-
 
     })(example || (example = {}));
 </script>
